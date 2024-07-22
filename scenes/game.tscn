@@ -1,0 +1,172 @@
+[gd_scene load_steps=16 format=3 uid="uid://gfkqmph6e0ex"]
+
+[ext_resource type="PackedScene" uid="uid://btfv2dsqrtbfi" path="res://scenes/player.tscn" id="1_e3tw1"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_og0dv"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_ittpi"]
+[ext_resource type="Texture2D" uid="uid://cg7nfcoy47cku" path="res://assets/tiles/tileset_barreiras.png" id="4_3igjw"]
+[ext_resource type="AudioStream" uid="uid://birr8j5gi2702" path="res://assets/sounds/water.wav" id="5_t40j8"]
+[ext_resource type="Texture2D" uid="uid://dp52cds1sxjlp" path="res://assets/tiles/checkpoint_tile.png" id="5_y0y3h"]
+[ext_resource type="AudioStream" uid="uid://bjdwpoxmvkus7" path="res://assets/sounds/fire.wav" id="6_ifjsr"]
+[ext_resource type="PackedScene" uid="uid://y1ekjgjl4dql" path="res://scenes/fire_gem.tscn" id="7_712tr"]
+[ext_resource type="AudioStream" uid="uid://b3abtneg1wl80" path="res://assets/sounds/wind.wav" id="8_nc5fn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5vgwt"]
+texture = ExtResource("4_3igjw")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/physics_layer_2/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_2/angular_velocity = 0.0
+0:0/0/physics_layer_3/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_3/angular_velocity = 0.0
+0:0/0/custom_data_0 = "fire"
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+1:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_1/angular_velocity = 0.0
+1:0/0/physics_layer_2/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_2/angular_velocity = 0.0
+1:0/0/physics_layer_3/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_3/angular_velocity = 0.0
+1:0/0/custom_data_0 = "water"
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_1/angular_velocity = 0.0
+0:1/0/physics_layer_2/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_2/angular_velocity = 0.0
+0:1/0/physics_layer_3/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_3/angular_velocity = 0.0
+0:1/0/physics_layer_3/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0/custom_data_0 = "air"
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_1/angular_velocity = 0.0
+1:1/0/physics_layer_2/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_2/angular_velocity = 0.0
+1:1/0/physics_layer_2/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0/physics_layer_3/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_3/angular_velocity = 0.0
+1:1/0/custom_data_0 = "earth"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4c01i"]
+texture = ExtResource("5_y0y3h")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+0:0/0/physics_layer_2/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_2/angular_velocity = 0.0
+0:0/0/physics_layer_3/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_3/angular_velocity = 0.0
+0:0/0/custom_data_0 = "checkpoint"
+
+[sub_resource type="TileSet" id="TileSet_srb1p"]
+physics_layer_0/collision_layer = 14
+physics_layer_0/collision_mask = 0
+physics_layer_1/collision_layer = 13
+physics_layer_1/collision_mask = 0
+physics_layer_2/collision_layer = 11
+physics_layer_2/collision_mask = 0
+physics_layer_3/collision_layer = 7
+physics_layer_3/collision_mask = 0
+custom_data_layer_0/name = "tipo"
+custom_data_layer_0/type = 4
+sources/0 = SubResource("TileSetAtlasSource_5vgwt")
+sources/1 = SubResource("TileSetAtlasSource_4c01i")
+
+[sub_resource type="Animation" id="Animation_7y8w4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kofyu"]
+resource_name = "lvl2"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 0.0358968),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(266, -4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mx2rt"]
+_data = {
+"RESET": SubResource("Animation_7y8w4"),
+"lvl2": SubResource("Animation_kofyu")
+}
+
+[node name="Game" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_og0dv")
+
+[node name="Player" parent="." instance=ExtResource("1_e3tw1")]
+position = Vector2(-123, 67)
+script = ExtResource("2_ittpi")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_srb1p")
+format = 2
+layer_0/tile_data = PackedInt32Array(393210, 0, 1, 393209, 0, 1, 393208, 0, 1, 393207, 0, 1, 393206, 0, 1, 327670, 0, 1, 262134, 0, 1, 196598, 0, 1, 131062, 0, 1, 393211, 0, 1, 327675, 0, 1, 262139, 0, 1, 196603, 0, 1, 131067, 0, 1, 65526, 0, 1, -10, 0, 1, -65546, 0, 1, -131082, 0, 1, -196618, 0, 1, -196617, 0, 1, -196616, 0, 1, -196615, 0, 1, -196614, 0, 1, -196613, 0, 1, -196612, 0, 1, -196611, 0, 1, -196610, 0, 1, -196609, 0, 1, -131073, 0, 1, -65537, 0, 1, -1, 0, 1, 65535, 0, 1, 131071, 0, 1, 65536, 0, 1, 65537, 0, 1, 65538, 0, 1, 65539, 0, 1, 4, 0, 1, -65532, 0, 1, -131068, 0, 1, -196604, 0, 1, -262140, 0, 1, -327676, 0, 1, 65540, 0, 1, 393215, 0, 1, 327680, 0, 1, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 1, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 393212, 0, 1, 393213, 0, 1, 393214, 0, 1, 327690, 0, 1, 327691, 0, 1, 262155, 0, 1, 196619, 0, 1, 131083, 0, 1, 65547, 0, 1, 11, 0, 1, -65525, 0, 1, -131061, 0, 1, -196597, 0, 1, -262133, 0, 1, -327669, 0, 1, -393205, 0, 1, -393211, 0, 1, -393212, 0, 1, -393210, 0, 1, -393209, 0, 1, -393208, 0, 1, -393207, 0, 1, -393206, 0, 1, -327675, 65536, 0, -262139, 65536, 0, -196603, 65536, 0, -131067, 65536, 0, -65531, 65536, 0, 5, 65536, 0, 65541, 65536, 0, 131077, 65536, 0, 196613, 65536, 0, 262149, 65536, 0, 393221, 65536, 0, 458757, 65536, 0, 65531, 0, 1, -327670, 65536, 0, -262134, 65536, 0, -196598, 65536, 0, -131062, 65536, 0, -65526, 65536, 0, 10, 65536, 0, 65546, 65536, 0, 131082, 65536, 0, 196618, 65536, 0, 262154, 65536, 0, 393226, 65536, 0, 458762, 65536, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0)
+
+[node name="FireGem" parent="." instance=ExtResource("7_712tr")]
+position = Vector2(135, -73)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, 0)
+zoom = Vector2(4, 4)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
+libraries = {
+"": SubResource("AnimationLibrary_mx2rt")
+}
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="WaterSounds2D" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("5_t40j8")
+volume_db = -80.0
+autoplay = true
+bus = &"WaterSounds"
+
+[node name="FireSounds2D" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("6_ifjsr")
+volume_db = -80.0
+autoplay = true
+
+[node name="EarthSounds2D" type="AudioStreamPlayer2D" parent="Sounds"]
+volume_db = -80.0
+
+[node name="AirSounds2D" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("8_nc5fn")
+volume_db = -80.0
+autoplay = true
+
+[connection signal="gem_collected" from="FireGem" to="Player" method="_on_fire_gem_gem_collected"]
