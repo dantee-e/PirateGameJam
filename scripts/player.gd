@@ -146,9 +146,9 @@ func _physics_process(delta):
 	var cell_coords = tile_map.local_to_map(position)
 	var td = tile_map.get_cell_tile_data(0, cell_coords)
 	if td:
-		var tipo = td.get_custom_data(tipo_tile_custom_data)
-		if tipo == 'checkpoint':
-			game_manager.change_level(current_level+1)
+		if td.get_custom_data(tipo_tile_custom_data) == 'checkpoint':
+			# logica pra mudar de fase
+			pass
 		
 	
 			
