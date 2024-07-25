@@ -79,7 +79,7 @@ texture_normal = ExtResource("8_fqpdf")
 texture_hover = ExtResource("9_8bkmq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Menu"]
-position = Vector2(80, 47)
+position = Vector2(85, 47)
 scale = Vector2(3.12417, 3.12417)
 sprite_frames = SubResource("SpriteFrames_mdif4")
 autoplay = "default"
