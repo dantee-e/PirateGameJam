@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv15vdd4uc7am"]
+
+[ext_resource type="Texture2D" uid="uid://dqns2ppcw1vy8" path="res://assets/tiles/checkpoint.png" id="1_j1g2x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0gxxf"]
+radius = 13.6
+
+[node name="Checkpoint" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0gxxf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_j1g2x")

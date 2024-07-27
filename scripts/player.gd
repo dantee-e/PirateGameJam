@@ -10,6 +10,7 @@ layer 4 eh ar
 
 
 
+@onready var main_scene = $"."
 
 
 
@@ -25,6 +26,7 @@ layer 4 eh ar
 @onready var player_collision = $CollisionShape2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var tile_map = $"../TileMap"
+@onready var checkpoint = $"../Checkpoint"
 
 # assets dos sons
 @onready var water_sounds = $"../Sounds/WaterSounds2D"
@@ -32,7 +34,7 @@ layer 4 eh ar
 @onready var earth_sounds = $"../Sounds/EarthSounds2D"
 @onready var air_sounds = $"../Sounds/AirSounds2D"
 
-
+signal next_level
 
 var left_right
 var up_down
@@ -46,6 +48,10 @@ var colliding : bool
 var elemento_atual = 1
 var current_level = 1
 
+
+func _ready():
+	Global.player = self
+
 func pos(value):
 	if (value):
 		return value
@@ -54,6 +60,16 @@ func pos(value):
 
 func get_inputs():
 	left_right = Input.get_axis("turn_left", "turn_right")
+	
+	
+	if Input.is_action_just_released("turn_left") or Input.is_action_just_released("turn_right"):
+		print(animated_sprite.animation.trim_suffix('_left').trim_suffix('_right'))
+		animated_sprite.play(animated_sprite.animation.trim_suffix('_left').trim_suffix('_right'))
+
+	if left_right<0  and !animated_sprite.animation.contains('_left'):
+		animated_sprite.play(animated_sprite.animation + '_left')
+	elif left_right>0 and !animated_sprite.animation.contains('_right'):
+		animated_sprite.play(animated_sprite.animation + '_right')
 	up_down = Input.get_axis("front", "back")
 	if (Input.is_action_just_pressed("change_element")):
 		elemento_atual = elemento_atual+1 if elemento_atual < 4 else 1
@@ -142,42 +158,8 @@ func _physics_process(delta):
 		colliding = 0	
 		manage_sounds(blocos_proximos)
 		
-	# player position
-	var cell_coords = tile_map.local_to_map(position)
-	var td = tile_map.get_cell_tile_data(0, cell_coords)
-	if td:
-		if td.get_custom_data(tipo_tile_custom_data) == 'checkpoint':
-			# logica pra mudar de fase
-			pass
-		
-	
-			
-	
-	
 	move_and_slide()
 	
-	
-
-
-#func _on_water_sounds_finished():
-	#water_sounds.play() # Replace with function body.
-
-
-
-# logica de morte
-	""""if is_colliding():
-		collider = get_collider(0)
-		var collision_point = get_collision_point(0) - get_collision_normal(0)*0.5
-		var cell_coords = collider.local_to_map(collision_point)
-		var td = collider.get_cell_tile_data(0, cell_coords)
-		
-		var match_tipos = {'water': 1, 'fire': 2, 'earth': 3, 'air': 4}
-		if td:
-			var tipo = td.get_custom_data(tipo_tile_custom_data)
-			if match_tipos[tipo] != elemento_atual:
-				print('morreu')"""
-
-
 
 
 
@@ -192,3 +174,8 @@ func _on_water_gem_gem_collected(element):
 func _on_fire_gem_gem_collected(element):
 	print('mudando para elemento ', element)
 	change_element(element)
+
+
+func _on_checkpoint_body_entered(body):
+	if body is CharacterBody2D:
+		Global.next_level()
