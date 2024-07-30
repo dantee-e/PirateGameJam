@@ -411,5 +411,6 @@ collision_mask = 15
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c1f7s")
-animation = &"fire_right"
+animation = &"air"
 autoplay = "water"
+frame_progress = 0.730231

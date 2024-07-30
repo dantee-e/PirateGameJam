@@ -1,0 +1,113 @@
+[gd_scene load_steps=16 format=3 uid="uid://b2avaai3b5r5a"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_de76h"]
+[ext_resource type="Texture2D" uid="uid://bistvntuy2ass" path="res://assets/buttons/button_start.png" id="2_wvyng"]
+[ext_resource type="Texture2D" uid="uid://dnj3poa5dtw6w" path="res://assets/buttons/button_start_hover.png" id="3_p3ffx"]
+[ext_resource type="Texture2D" uid="uid://b56nuauvvowtx" path="res://assets/buttons/button_continue.png" id="4_uncjl"]
+[ext_resource type="Texture2D" uid="uid://d0vw6wvytcn67" path="res://assets/buttons/button_continue_hover.png" id="5_u3l7v"]
+[ext_resource type="Texture2D" uid="uid://bfdshtoojdsc2" path="res://assets/buttons/button_settings.png" id="6_fxp54"]
+[ext_resource type="Texture2D" uid="uid://bmjvhr0qy1ufh" path="res://assets/buttons/button_settings_hover.png" id="7_seb1q"]
+[ext_resource type="Texture2D" uid="uid://dtoqb8oy5l8bx" path="res://assets/guys/water_guy_new_frames.png" id="8_lcr13"]
+[ext_resource type="Texture2D" uid="uid://thor35wtcah2" path="res://assets/tiles/black_tile.png" id="9_e7v07"]
+[ext_resource type="FontFile" uid="uid://b5rggyify8g3t" path="res://assets/fonts/PixelOperator8.ttf" id="10_n6csa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnrdv"]
+atlas = ExtResource("8_lcr13")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0xkp"]
+atlas = ExtResource("8_lcr13")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tjp2"]
+atlas = ExtResource("8_lcr13")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbefk"]
+atlas = ExtResource("8_lcr13")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_828al"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnrdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0xkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tjp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbefk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Menu" type="Node"]
+script = ExtResource("1_de76h")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+show_behind_parent = true
+offset_right = 131.0
+offset_bottom = 75.0
+texture = ExtResource("9_e7v07")
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(72, 39)
+zoom = Vector2(7.335, 7.335)
+
+[node name="StartButton2" type="TextureButton" parent="."]
+offset_right = 32.0
+offset_bottom = 16.0
+texture_normal = ExtResource("2_wvyng")
+texture_hover = ExtResource("3_p3ffx")
+metadata/_edit_use_anchors_ = true
+
+[node name="ContinueButton2" type="TextureButton" parent="."]
+offset_top = 38.0
+offset_right = 40.0
+offset_bottom = 54.0
+texture_normal = ExtResource("4_uncjl")
+texture_hover = ExtResource("5_u3l7v")
+metadata/_edit_use_anchors_ = true
+
+[node name="SettingsButton2" type="TextureButton" parent="."]
+offset_top = 56.0
+offset_right = 40.0
+offset_bottom = 72.0
+texture_normal = ExtResource("6_fxp54")
+texture_hover = ExtResource("7_seb1q")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(85, 47)
+scale = Vector2(3.12417, 3.12417)
+sprite_frames = SubResource("SpriteFrames_828al")
+autoplay = "default"
+
+[node name="Resume" type="Button" parent="."]
+offset_left = 3.0
+offset_top = 17.0
+offset_right = 191.0
+offset_bottom = 41.0
+scale = Vector2(0.28, 0.28)
+theme_override_fonts/font = ExtResource("10_n6csa")
+text = "Resume"
+
+[node name="LevelSelector" type="Button" parent="."]
+offset_left = 4.0
+offset_top = 25.0
+offset_right = 192.0
+offset_bottom = 49.0
+scale = Vector2(0.28, 0.28)
+theme_override_fonts/font = ExtResource("10_n6csa")
+text = "Level Selector"
+
+[connection signal="pressed" from="StartButton2" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="LevelSelector" to="." method="_on_level_selector_pressed"]

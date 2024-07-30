@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm28fjpacq7us"]
+
+[ext_resource type="Script" path="res://scripts/level_selector.gd" id="1_x6jml"]
+[ext_resource type="FontFile" uid="uid://b5rggyify8g3t" path="res://assets/fonts/PixelOperator8.ttf" id="2_8xgy1"]
+
+[node name="LevelSelector" type="Node2D"]
+script = ExtResource("1_x6jml")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="Button" type="Button" parent="."]
+offset_left = -128.0
+offset_top = -67.0
+offset_right = -32.0
+offset_bottom = -43.0
+scale = Vector2(0.68, 0.68)
+theme_override_fonts/font = ExtResource("2_8xgy1")
+text = "Level 1"

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://byxtp2b8vrv3x"]
+
+[ext_resource type="FontFile" uid="uid://b5rggyify8g3t" path="res://assets/fonts/PixelOperator8.ttf" id="1_3nhle"]
+[ext_resource type="Script" path="res://scripts/story.gd" id="1_jom68"]
+[ext_resource type="FontFile" uid="uid://qu4rprbv6351" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_adrrc"]
+
+[node name="Story" type="Node2D"]
+script = ExtResource("1_jom68")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -114.0
+offset_top = -50.0
+offset_right = 126.0
+offset_bottom = -34.0
+scale = Vector2(0.48, 0.48)
+theme_override_fonts/font = ExtResource("1_3nhle")
+text = "Historia do bagulho"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 13.0
+offset_top = 53.0
+offset_right = 143.0
+offset_bottom = 77.0
+theme_override_fonts/font = ExtResource("2_adrrc")
+text = "Continue"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

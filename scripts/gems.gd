@@ -4,10 +4,13 @@ extends Area2D
 
 signal gem_collected(element)
 
+func _ready():
+	if not is_in_group("gems"):
+		add_to_group("gems")
+
 func _on_body_entered(body):
 	if body is CharacterBody2D:
 		animation_player.play("collected")
-		print(name)
 		match name:
 			'WaterGem':
 				gem_collected.emit(1)

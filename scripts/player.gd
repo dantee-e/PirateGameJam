@@ -21,7 +21,6 @@ layer 4 eh ar
 
 
 
-@onready var game_manager = %GameManager
 @onready var detector_paredes = $DetectorParedes
 @onready var player_collision = $CollisionShape2D
 @onready var animated_sprite = $AnimatedSprite2D
@@ -49,8 +48,17 @@ var elemento_atual = 1
 var current_level = 1
 
 
+func _on_gem_collected(element):
+	print('mudando para elemento ', element)
+	var i = 0
+	change_element(element)
+
 func _ready():
-	Global.player = self
+	MainScene.player = self
+	var gems = get_tree().get_nodes_in_group("gems")
+	for gem in gems:
+		print('gema encontrada')
+		gem.connect("gem_collected",_on_gem_collected)
 
 func pos(value):
 	if (value):
@@ -59,11 +67,14 @@ func pos(value):
 		return -value
 
 func get_inputs():
+	var pause = Input.is_action_pressed("pause")
+	if pause:
+		MainScene.load_menu()
+	
 	left_right = Input.get_axis("turn_left", "turn_right")
 	
 	
 	if Input.is_action_just_released("turn_left") or Input.is_action_just_released("turn_right"):
-		print(animated_sprite.animation.trim_suffix('_left').trim_suffix('_right'))
 		animated_sprite.play(animated_sprite.animation.trim_suffix('_left').trim_suffix('_right'))
 
 	if left_right<0  and !animated_sprite.animation.contains('_left'):
@@ -166,16 +177,8 @@ func _physics_process(delta):
 
 
 
-func _on_water_gem_gem_collected(element):
-	print('mudando para elemento ', element)
-	change_element(element)
-
-
-func _on_fire_gem_gem_collected(element):
-	print('mudando para elemento ', element)
-	change_element(element)
-
-
 func _on_checkpoint_body_entered(body):
 	if body is CharacterBody2D:
-		Global.next_level()
+		MainScene.next_level()
+
+
