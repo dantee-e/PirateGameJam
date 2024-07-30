@@ -16,6 +16,10 @@ var current_level = 0
 var level_instance
 
 func unload_level():
+	for child in main_2d.get_children():
+		if is_instance_valid(child):
+			child.queue_free()
+		
 	if (is_instance_valid(level_instance)):
 		level_instance.queue_free()
 	hide_menu()
@@ -23,6 +27,7 @@ func unload_level():
 
 func load_level(level_name : String):
 	unload_level()
+	hide_menu()
 	var level_path = "res://Levels/%s.tscn" %level_name
 	var level_resource = load(level_path)
 	if level_resource:
@@ -30,7 +35,10 @@ func load_level(level_name : String):
 		main_2d.call_deferred("add_child", level_instance)
 
 func load_menu():
-	load_level('menu')
+	var level_resource = load("res://Levels/menu.tscn")
+	if level_resource:
+		level_instance = level_resource.instantiate()
+		main_2d.call_deferred("add_child", level_instance)
 
 func hide_menu():
 	if(is_instance_valid(menu)):
@@ -45,6 +53,7 @@ func next_level():
 	
 
 func _on_menu_level_selector_button_pressed():
+	hide_menu()
 	load_level('level_selector')
 
 

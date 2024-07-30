@@ -26,6 +26,7 @@ layer 4 eh ar
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var tile_map = $"../TileMap"
 @onready var checkpoint = $"../Checkpoint"
+@onready var camera = $"../Camera2D"
 
 # assets dos sons
 @onready var water_sounds = $"../Sounds/WaterSounds2D"
@@ -57,7 +58,6 @@ func _ready():
 	MainScene.player = self
 	var gems = get_tree().get_nodes_in_group("gems")
 	for gem in gems:
-		print('gema encontrada')
 		gem.connect("gem_collected",_on_gem_collected)
 
 func pos(value):
@@ -68,9 +68,13 @@ func pos(value):
 
 func get_inputs():
 	var pause = Input.is_action_pressed("pause")
+	var on_menu = is_instance_valid(MainScene.menu)
 	if pause:
-		MainScene.load_menu()
+		if !on_menu:
+			MainScene.load_menu()
 	
+	if on_menu:
+		return
 	left_right = Input.get_axis("turn_left", "turn_right")
 	
 	
