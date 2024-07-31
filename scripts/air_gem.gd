@@ -16,13 +16,4 @@ func _on_body_entered(body):
 	if body is CharacterBody2D:
 		animation_player.play("collected")
 		
-		match name:
-			'WaterGem':
-				print('emitindo watergem')
-			'FireGem':
-				print('emitindo firegem')
-				gem_collected.emit(2)
-			'EarthGem':
-				gem_collected.emit(3)
-			'AirGem':
-				gem_collected.emit(4)
+		gem_collected.emit(4)

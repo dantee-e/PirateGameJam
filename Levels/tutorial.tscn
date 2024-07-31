@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx710c27634kr"]
+
+[ext_resource type="Script" path="res://scripts/story.gd" id="1_bkgna"]
+[ext_resource type="FontFile" uid="uid://b5rggyify8g3t" path="res://assets/fonts/PixelOperator8.ttf" id="2_n21yd"]
+[ext_resource type="FontFile" uid="uid://qu4rprbv6351" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_4jsqd"]
+
+[node name="Story" type="Node2D"]
+script = ExtResource("1_bkgna")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -138.0
+offset_top = -68.0
+offset_right = 852.0
+offset_bottom = 172.0
+scale = Vector2(0.48, 0.48)
+theme_override_fonts/font = ExtResource("2_n21yd")
+text = "You can only pass through walls of your own
+element, but it's pretty dark!
+
+Use the sounds emitted by the walls to
+understand your environment. Grab the 
+elemental gems to change your element, and
+try to get to the light!
+
+Good Luck!"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 13.0
+offset_top = 53.0
+offset_right = 143.0
+offset_bottom = 77.0
+theme_override_fonts/font = ExtResource("3_4jsqd")
+text = "Continue"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

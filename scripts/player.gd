@@ -15,7 +15,7 @@ layer 4 eh ar
 
 
 
-@export var speed = 30
+@export var speed = 40
 @export var rotation_speed = 2.5
 @export var cons_atenuacao_vol = 1
 
@@ -25,7 +25,6 @@ layer 4 eh ar
 @onready var player_collision = $CollisionShape2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var tile_map = $"../TileMap"
-@onready var checkpoint = $"../Checkpoint"
 @onready var camera = $"../Camera2D"
 
 # assets dos sons
@@ -51,12 +50,31 @@ var current_level = 1
 
 func _on_gem_collected(element):
 	print('mudando para elemento ', element)
-	var i = 0
 	change_element(element)
+
+"""
+func print_scene_tree(node, level):
+	var indent :String
+	for i in level:
+		indent = str(indent, '	')
+	print(indent + node.name + " (" + node.get_class() + ")")
+	for child in node.get_children():
+		print_scene_tree(child, level + 1)
+"""
+
 
 func _ready():
 	MainScene.player = self
-	var gems = get_tree().get_nodes_in_group("gems")
+	get_parent().connect("ready", _on_scene_ready)
+	#print_scene_tree(get_tree().root, 0)
+
+	
+func _on_scene_ready():
+	
+	var checkpoints = get_tree().get_nodes_in_group('checkpoint')
+	for checkpoint in checkpoints:
+		checkpoint.connect('body_entered', _on_checkpoint_body_entered)
+	var gems = get_tree().get_nodes_in_group('gems')
 	for gem in gems:
 		gem.connect("gem_collected",_on_gem_collected)
 
@@ -184,5 +202,8 @@ func _physics_process(delta):
 func _on_checkpoint_body_entered(body):
 	if body is CharacterBody2D:
 		MainScene.next_level()
+
+
+
 
 

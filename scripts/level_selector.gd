@@ -30,3 +30,4 @@ func _ready():
 		
 func _on_pressed(button):
 	MainScene.load_level(button.name)
+	MainScene.current_level = button.name

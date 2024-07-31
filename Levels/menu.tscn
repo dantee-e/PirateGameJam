@@ -64,29 +64,30 @@ metadata/_edit_use_anchors_ = true
 zoom = Vector2(4, 4)
 
 [node name="StartButton2" type="TextureButton" parent="."]
-offset_left = -120.0
-offset_top = -69.0
-offset_right = -88.0
-offset_bottom = -53.0
+offset_left = 150.0
+offset_top = -42.0
+offset_right = 182.0
+offset_bottom = -26.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("2_wvyng")
 texture_hover = ExtResource("3_p3ffx")
 metadata/_edit_use_anchors_ = true
 
 [node name="ContinueButton2" type="TextureButton" parent="."]
-offset_left = -125.0
-offset_right = -85.0
-offset_bottom = 16.0
+offset_left = -227.0
+offset_top = -20.0
+offset_right = -187.0
+offset_bottom = -4.0
 scale = Vector2(1.66724, 1.66724)
 texture_normal = ExtResource("4_uncjl")
 texture_hover = ExtResource("5_u3l7v")
 metadata/_edit_use_anchors_ = true
 
 [node name="SettingsButton2" type="TextureButton" parent="."]
-offset_left = -106.0
-offset_top = 36.0
-offset_right = -66.0
-offset_bottom = 52.0
+offset_left = -235.0
+offset_top = 19.0
+offset_right = -195.0
+offset_bottom = 35.0
 scale = Vector2(1.65888, 1.65888)
 texture_normal = ExtResource("6_fxp54")
 texture_hover = ExtResource("7_seb1q")
@@ -98,24 +99,64 @@ scale = Vector2(3.12417, 3.12417)
 sprite_frames = SubResource("SpriteFrames_828al")
 autoplay = "default"
 
-[node name="Resume" type="Button" parent="."]
-offset_left = -123.0
-offset_top = -33.0
-offset_right = 65.0
-offset_bottom = -9.0
-scale = Vector2(0.564941, 0.564941)
-theme_override_fonts/font = ExtResource("10_n6csa")
-text = "Resume"
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+flat = true
 
-[node name="LevelSelector" type="Button" parent="."]
-offset_left = -112.0
-offset_top = -13.0
-offset_right = 76.0
-offset_bottom = 11.0
-scale = Vector2(0.504077, 0.504077)
+[node name="RestartLevel" type="Button" parent="Button"]
+offset_left = 30.0
+offset_top = -60.0
+offset_right = 218.0
+offset_bottom = -36.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("10_n6csa")
+text = "Restart Level"
+alignment = 0
+
+[node name="LevelSelector" type="Button" parent="Button"]
+offset_left = -110.0
+offset_top = -30.0
+offset_right = 78.0
+offset_bottom = -6.0
+scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("10_n6csa")
 text = "Level Selector"
+alignment = 0
+
+[node name="Resume" type="Button" parent="Button"]
+offset_left = 30.0
+offset_top = -30.0
+offset_right = 218.0
+offset_bottom = -6.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("10_n6csa")
+text = "Resume"
+alignment = 0
+
+[node name="StartButton" type="Button" parent="Button"]
+offset_left = -110.0
+offset_top = -60.0
+offset_right = 78.0
+offset_bottom = -36.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("10_n6csa")
+text = "Start"
+alignment = 0
+
+[node name="Continue" type="Button" parent="Button"]
+offset_left = -242.0
+offset_top = 55.0
+offset_right = -54.0
+offset_bottom = 79.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("10_n6csa")
+text = "Continue
+"
+alignment = 0
 
 [connection signal="pressed" from="StartButton2" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="LevelSelector" to="." method="_on_level_selector_pressed"]
+[connection signal="pressed" from="Button/RestartLevel" to="." method="_on_restart_level_pressed"]
+[connection signal="pressed" from="Button/LevelSelector" to="." method="_on_level_selector_pressed"]
+[connection signal="pressed" from="Button/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Button/StartButton" to="." method="_on_start_button_pressed"]

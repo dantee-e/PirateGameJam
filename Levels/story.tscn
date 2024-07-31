@@ -8,13 +8,22 @@
 script = ExtResource("1_jom68")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -114.0
-offset_top = -50.0
-offset_right = 126.0
-offset_bottom = -34.0
+offset_left = -138.0
+offset_top = -68.0
+offset_right = 852.0
+offset_bottom = 172.0
 scale = Vector2(0.48, 0.48)
 theme_override_fonts/font = ExtResource("1_3nhle")
-text = "Historia do bagulho"
+text = "You are the pet wisp of a legendary wizard
+known for his amazing powers, 
+his ingenious research on all fields of magic, 
+and his extreme messyness!
+
+This time, after using your elemental powers, 
+he forgot to get you back on your
+wisp bottle. So it´s up to you to get back
+there yourself!
+"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)

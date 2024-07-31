@@ -8,10 +8,11 @@ var main_2d
 
 var player
 
-var levels = ['story','level1', 'level2', 'level3', 'level4', 'endscreen']
+var levels = ['story','tutorial', 'level1', 'level2', 'level3', 'level4', 'level5',
+			'level6', 'level7', 'level8', 'endscreen']
 var completed_levels = 0
 var ongoing_game = 0
-var current_level = 0
+var current_level
 
 var level_instance
 
@@ -48,8 +49,9 @@ func hide_menu():
 func next_level():
 	if !ongoing_game:
 		ongoing_game=1
-	current_level+=1
-	load_level(levels[current_level])
+	current_level = levels[levels.find(current_level)+1]
+	print(current_level)
+	load_level(current_level)
 	
 
 func _on_menu_level_selector_button_pressed():

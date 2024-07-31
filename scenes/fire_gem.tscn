@@ -1,8 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://y1ekjgjl4dql"]
 
-[ext_resource type="Script" path="res://scripts/gems.gd" id="1_8djv7"]
+[ext_resource type="Script" path="res://scripts/fire_gem.gd" id="1_mxyap"]
 [ext_resource type="Texture2D" uid="uid://blo7xstblnr6x" path="res://assets/frames/fire_gem_frames.png" id="2_8h204"]
 [ext_resource type="AudioStream" uid="uid://c1b3af5fgiujo" path="res://assets/sounds/gem_pickup.wav" id="8_q48tm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lne3o"]
+radius = 4.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m1bo1"]
 atlas = ExtResource("2_8h204")
@@ -53,9 +56,6 @@ animations = [{
 "name": &"spin",
 "speed": 5.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_lne3o"]
-radius = 4.0
 
 [sub_resource type="Animation" id="Animation_d32pg"]
 length = 0.001
@@ -159,16 +159,16 @@ _data = {
 [node name="FireGem" type="Area2D"]
 collision_layer = 15
 collision_mask = 15
-script = ExtResource("1_8djv7")
+script = ExtResource("1_mxyap")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lne3o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hwewa")
 animation = &"spin"
 autoplay = "spin"
 frame_progress = 0.410084
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_lne3o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

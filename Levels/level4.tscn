@@ -1,19 +1,20 @@
-[gd_scene load_steps=21 format=3 uid="uid://gfkqmph6e0ex"]
+[gd_scene load_steps=22 format=3 uid="uid://cmfoiouycetlr"]
 
-[ext_resource type="PackedScene" uid="uid://btfv2dsqrtbfi" path="res://scenes/player.tscn" id="2_vuert"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="3_gbik1"]
-[ext_resource type="Texture2D" uid="uid://cg7nfcoy47cku" path="res://assets/tiles/tileset_barreiras.png" id="4_k725s"]
-[ext_resource type="Texture2D" uid="uid://dp52cds1sxjlp" path="res://assets/tiles/checkpoint_tile.png" id="5_a2523"]
-[ext_resource type="PackedScene" uid="uid://y1ekjgjl4dql" path="res://scenes/fire_gem.tscn" id="6_hpoef"]
-[ext_resource type="AudioStream" uid="uid://birr8j5gi2702" path="res://assets/sounds/water.wav" id="7_yuaa2"]
-[ext_resource type="AudioStream" uid="uid://0ck013ggw52" path="res://assets/sounds/dirt.mp3" id="8_x6pwf"]
-[ext_resource type="AudioStream" uid="uid://bjdwpoxmvkus7" path="res://assets/sounds/fire.wav" id="8_y6wl2"]
-[ext_resource type="FontFile" uid="uid://qu4rprbv6351" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="9_dmgh3"]
-[ext_resource type="AudioStream" uid="uid://b3abtneg1wl80" path="res://assets/sounds/wind.wav" id="9_r0bir"]
-[ext_resource type="PackedScene" uid="uid://cv15vdd4uc7am" path="res://scenes/checkpoint.tscn" id="10_bfg7l"]
+[ext_resource type="PackedScene" uid="uid://btfv2dsqrtbfi" path="res://scenes/player.tscn" id="1_lfpcr"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_u42sb"]
+[ext_resource type="Texture2D" uid="uid://cg7nfcoy47cku" path="res://assets/tiles/tileset_barreiras.png" id="3_7wnw4"]
+[ext_resource type="Texture2D" uid="uid://dp52cds1sxjlp" path="res://assets/tiles/checkpoint_tile.png" id="4_itlt4"]
+[ext_resource type="PackedScene" uid="uid://y1ekjgjl4dql" path="res://scenes/fire_gem.tscn" id="5_532ip"]
+[ext_resource type="AudioStream" uid="uid://birr8j5gi2702" path="res://assets/sounds/water.wav" id="6_y7iux"]
+[ext_resource type="AudioStream" uid="uid://bjdwpoxmvkus7" path="res://assets/sounds/fire.wav" id="7_3plwi"]
+[ext_resource type="AudioStream" uid="uid://b3abtneg1wl80" path="res://assets/sounds/wind.wav" id="8_2hsjb"]
+[ext_resource type="FontFile" uid="uid://qu4rprbv6351" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="9_c20ah"]
+[ext_resource type="PackedScene" uid="uid://cuomsxq5utvba" path="res://scenes/water_gem.tscn" id="10_3b1km"]
+[ext_resource type="PackedScene" uid="uid://bqj45opme5qbc" path="res://scenes/earth_gem.tscn" id="10_jejy6"]
+[ext_resource type="PackedScene" uid="uid://cv15vdd4uc7am" path="res://scenes/checkpoint.tscn" id="12_4k81i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5vgwt"]
-texture = ExtResource("4_k725s")
+texture = ExtResource("3_7wnw4")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -60,7 +61,7 @@ texture = ExtResource("4_k725s")
 1:1/0/custom_data_0 = "earth"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4c01i"]
-texture = ExtResource("5_a2523")
+texture = ExtResource("4_itlt4")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -221,17 +222,18 @@ _data = {
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Player" parent="." instance=ExtResource("2_vuert")]
-position = Vector2(-123, 67)
-script = ExtResource("3_gbik1")
+[node name="Player" parent="." instance=ExtResource("1_lfpcr")]
+position = Vector2(-116, 74)
+motion_mode = 0
+script = ExtResource("2_u42sb")
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false
 tile_set = SubResource("TileSet_srb1p")
 format = 2
-layer_0/tile_data = PackedInt32Array(393210, 0, 1, 393209, 0, 1, 393208, 0, 1, 393207, 0, 1, 393206, 0, 1, 327670, 0, 1, 262134, 0, 1, 196598, 0, 1, 131062, 0, 1, 393211, 0, 1, 327675, 0, 1, 262139, 0, 1, 196603, 0, 1, 131067, 0, 1, 65526, 0, 1, -10, 0, 1, -65546, 0, 1, -131082, 0, 1, -196618, 0, 1, -196617, 0, 1, -196616, 0, 1, -196615, 0, 1, -196614, 0, 1, -196613, 0, 1, -196612, 0, 1, -196611, 0, 1, -196610, 0, 1, -196609, 0, 1, -131073, 0, 1, -65537, 0, 1, -1, 0, 1, 65535, 0, 1, 131071, 0, 1, 65536, 0, 1, 65537, 0, 1, 65538, 0, 1, 65539, 0, 1, 4, 0, 1, -65532, 0, 1, -131068, 0, 1, -196604, 0, 1, -262140, 0, 1, -327676, 0, 1, 65540, 0, 1, 393215, 0, 1, 327680, 0, 1, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 1, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 393212, 0, 1, 393213, 0, 1, 393214, 0, 1, 327690, 0, 1, 327691, 0, 1, 262155, 0, 1, 196619, 0, 1, 131083, 0, 1, 65547, 0, 1, 11, 0, 1, -65525, 0, 1, -131061, 0, 1, -196597, 0, 1, -262133, 0, 1, -327669, 0, 1, -393205, 0, 1, -393211, 0, 1, -393212, 0, 1, -393210, 0, 1, -393209, 0, 1, -393208, 0, 1, -393207, 0, 1, -393206, 0, 1, -327675, 65536, 0, -262139, 65536, 0, -196603, 65536, 0, -131067, 65536, 0, -65531, 65536, 0, 5, 65536, 0, 65541, 65536, 0, 131077, 65536, 0, 196613, 65536, 0, 262149, 65536, 0, 393221, 65536, 0, 458757, 65536, 0, 65531, 0, 1, -327670, 65536, 0, -262134, 65536, 0, -196598, 65536, 0, -131062, 65536, 0, -65526, 65536, 0, 10, 65536, 0, 65546, 65536, 0, 131082, 65536, 0, 196618, 65536, 0, 262154, 65536, 0, 393226, 65536, 0, 458762, 65536, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0)
+layer_0/tile_data = PackedInt32Array(393210, 0, 1, 393209, 0, 1, 393208, 0, 1, 393207, 0, 1, 393206, 0, 1, 327670, 0, 1, 262134, 0, 1, 196598, 0, 1, 131062, 0, 1, 393211, 0, 1, 327675, 0, 1, 262139, 0, 1, 131067, 65536, 1, 393215, 0, 1, 327680, 0, 1, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 1, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 393212, 0, 1, 393213, 0, 1, 393214, 0, 1, -327675, 65536, 0, -262139, 65536, 0, -196603, 65536, 0, -131067, 65536, 0, -65531, 65536, 0, 5, 65536, 0, 65541, 65536, 0, 131077, 65536, 0, 196613, 65536, 0, 262149, 65536, 0, 393221, 65536, 0, 458757, 65536, 0, 65531, 65536, 1, -327670, 65536, 0, -262134, 65536, 0, -196598, 65536, 0, -131062, 65536, 0, -65526, 65536, 0, 10, 65536, 0, 65546, 65536, 0, 131082, 65536, 0, 196618, 65536, 0, 262154, 65536, 0, 393226, 65536, 0, 458762, 65536, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, -10, 0, 1, -65546, 0, 1, -131082, 0, 1, -196618, 0, 1, -196617, 0, 1, -196616, 0, 1, -196615, 0, 1, -196614, 0, 1, -196613, 0, 1, -196612, 0, 1, -196611, 0, 1, -196610, 0, 1, -196609, 0, 1, -131073, 0, 1, -65537, 0, 1, -1, 0, 1, 65535, 0, 1, 131071, 0, 1, 65536, 0, 1, 65537, 0, 1, 65538, 0, 1, 65539, 0, 1, 65540, 0, 1, 4, 0, 1, -65532, 0, 1, -131068, 0, 1, -196604, 0, 1, -262140, 0, 1, -327676, 0, 1, -393212, 0, 1, -393211, 0, 1, -393210, 0, 1, -393209, 0, 1, -393208, 0, 1, -393207, 0, 1, -393206, 0, 1, -393205, 0, 1, -327669, 0, 1, -262133, 0, 1, -196597, 0, 1, -131061, 0, 1, -65525, 0, 1, 11, 0, 1, 65547, 0, 1, 131083, 0, 1, 196619, 0, 1, 262155, 0, 1, 327691, 0, 1, 327690, 0, 1, 65526, 0, 1, 262135, 65536, 0, 262136, 65536, 0, 262137, 65536, 0, 262138, 65536, 0, 131063, 0, 0, 131064, 0, 0, 131065, 0, 0, 131066, 65536, 1, -131077, 65536, 0, -65541, 65536, 0, -5, 65536, 0, 196603, 65536, 0, 131068, 0, 1, 131069, 0, 1, 131070, 0, 1)
 
-[node name="FireGem" parent="." instance=ExtResource("6_hpoef")]
+[node name="FireGem" parent="." instance=ExtResource("5_532ip")]
 position = Vector2(135, -73)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -246,32 +248,33 @@ libraries = {
 [node name="Sounds" type="Node" parent="."]
 
 [node name="WaterSounds2D" type="AudioStreamPlayer2D" parent="Sounds"]
-stream = ExtResource("7_yuaa2")
+stream = ExtResource("6_y7iux")
 volume_db = -80.0
 autoplay = true
 bus = &"WaterSounds"
 
 [node name="FireSounds2D" type="AudioStreamPlayer2D" parent="Sounds"]
-stream = ExtResource("8_y6wl2")
+stream = ExtResource("7_3plwi")
 volume_db = -80.0
 autoplay = true
 
 [node name="EarthSounds2D" type="AudioStreamPlayer2D" parent="Sounds"]
-stream = ExtResource("8_x6pwf")
 volume_db = -80.0
 
 [node name="AirSounds2D" type="AudioStreamPlayer2D" parent="Sounds"]
-stream = ExtResource("9_r0bir")
+stream = ExtResource("8_2hsjb")
 volume_db = -80.0
 autoplay = true
+
+[node name="Lvl 1" type="Node" parent="."]
 
 [node name="Label" type="Label" parent="."]
 offset_left = -246.0
 offset_top = -30.0
 offset_right = -146.0
 offset_bottom = -7.0
-theme_override_fonts/font = ExtResource("9_dmgh3")
-text = "Level 1"
+theme_override_fonts/font = ExtResource("9_c20ah")
+text = "Level 4"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -279,7 +282,19 @@ libraries = {
 }
 autoplay = "Start"
 
-[node name="Checkpoint" parent="." instance=ExtResource("10_bfg7l")]
-position = Vector2(127, 80)
+[node name="FireGem2" parent="." instance=ExtResource("5_532ip")]
+position = Vector2(-89, 39)
 
-[connection signal="ready" from="." to="Player" method="_on_level_1_ready"]
+[node name="WaterGem" parent="." instance=ExtResource("10_3b1km")]
+position = Vector2(-87, -39)
+
+[node name="WaterGem2" parent="." instance=ExtResource("10_3b1km")]
+position = Vector2(-136, 41)
+
+[node name="EarthGem" parent="." instance=ExtResource("10_jejy6")]
+position = Vector2(-41, -8)
+
+[node name="Checkpoint" parent="." instance=ExtResource("12_4k81i")]
+position = Vector2(126, 81)
+
+[connection signal="gem_collected" from="FireGem" to="Player" method="_on_fire_gem_gem_collected"]

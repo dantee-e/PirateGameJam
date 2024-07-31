@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cuomsxq5utvba"]
 
-[ext_resource type="Script" path="res://scripts/gems.gd" id="1_ywrfv"]
+[ext_resource type="Script" path="res://scripts/water_gem.gd" id="1_4sbib"]
 [ext_resource type="AudioStream" uid="uid://c1b3af5fgiujo" path="res://assets/sounds/gem_pickup.wav" id="2_3pjis"]
 [ext_resource type="Texture2D" uid="uid://cwjg61qb5agvg" path="res://assets/frames/water_gem_frames.png" id="3_pmcsk"]
 
@@ -159,7 +159,7 @@ animations = [{
 [node name="WaterGem" type="Area2D"]
 collision_layer = 15
 collision_mask = 15
-script = ExtResource("1_ywrfv")
+script = ExtResource("1_4sbib")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lne3o")

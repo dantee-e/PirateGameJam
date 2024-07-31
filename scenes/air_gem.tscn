@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://74sj1n7olq5f"]
 
-[ext_resource type="Script" path="res://scripts/gems.gd" id="1_iur2a"]
+[ext_resource type="Script" path="res://scripts/air_gem.gd" id="1_07ke8"]
 [ext_resource type="Texture2D" uid="uid://bgatd33omwygd" path="res://assets/frames/air_gem_frames.png" id="2_o0o8d"]
 [ext_resource type="AudioStream" uid="uid://c1b3af5fgiujo" path="res://assets/sounds/gem_pickup.wav" id="3_o2vlo"]
 
@@ -159,7 +159,7 @@ _data = {
 [node name="AirGem" type="Area2D"]
 collision_layer = 15
 collision_mask = 15
-script = ExtResource("1_iur2a")
+script = ExtResource("1_07ke8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hwewa")
